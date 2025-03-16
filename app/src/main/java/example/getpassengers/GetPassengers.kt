@@ -13,28 +13,28 @@ import androidx.appcompat.app.AppCompatActivity
 
 class GetPassengers : AppCompatActivity() {
 
-    private val passList: MutableList<Passenger> = mutableListOf()
-    private lateinit var accumList: TextView
-    private lateinit var firstNameField: EditText
-    private lateinit var lastNameField: EditText
-    private lateinit var phoneField: EditText
+    private var passList: MutableList<Passenger> = mutableListOf()
+    private lateinit var textPut: TextView
+    private lateinit var textFirst: EditText
+    private lateinit var textLast: EditText
+    private lateinit var textPhone: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_passengers)
 
         // Initialize UI elements by linking them to XML IDs
-        accumList = findViewById(R.id.accum_list)
-        firstNameField = findViewById(R.id.first_name)
-        lastNameField = findViewById(R.id.last_name)
-        phoneField = findViewById(R.id.phone_number)
+        textPut = findViewById(R.id.accum_list)
+        textFirst = findViewById(R.id.first_name)
+        textLast = findViewById(R.id.last_name)
+        textPhone = findViewById(R.id.phone_number)
     }
 
     // Function to add a passenger to the accumulating list
     fun enterPassenger(view: View) {
-        val firstName = firstNameField.text.toString().trim()
-        val lastName = lastNameField.text.toString().trim()
-        val phone = phoneField.text.toString().trim()
+        val firstName = textFirst.text.toString().trim()
+        val lastName = textLast.text.toString().trim()
+        val phone = textPhone.text.toString().trim()
 
         // Ensure all fields are filled
         if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty()) {
@@ -48,13 +48,13 @@ class GetPassengers : AppCompatActivity() {
        // Format text
         val formattedText = "${newPassenger.fName}  ${newPassenger.lName}  ${newPassenger.phone}"
 
-        accumList.append("\n$formattedText")
+        textPut.append("\n$formattedText")
 
 
         // Clear input fields after adding passenger
-        firstNameField.text.clear()
-        lastNameField.text.clear()
-        phoneField.text.clear()
+        textFirst.text.clear()
+        textLast.text.clear()
+        textPhone.text.clear()
     }
 
 
