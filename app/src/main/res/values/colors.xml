@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Tyler Radke -->
+<!-- Major Program 1 - GetPassengers -->
+<!-- XML File - colors.xml -->
+
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#FFBBBBBB</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="purple">#FFA020F0</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>
