@@ -6,7 +6,7 @@ The GetPassengers app allows users to enter details and store passengers in a ru
 
 ## Challenges and Solutions  
 
-One challenge I faced durning the project was handling data passing between activities. In the start when I was making the buttons the activity_main.xml file, the app was crashing at first because I did not make the second activity GetPassenger.kt. Later, there was also an issue sending back the passenger list back to the MainActivity.kt, where it was not populating the accumulated list from the second activity. I ended up figuring out that there was an issue with the key-value pairs sending back the data. I ended up making a for loop to get the keys for each passenger and used the putExtra() method to return each passenger object back as a string. getStringExtra() was used in a for loop to retrieve and display the list correctly.  
+One challenge I faced durning the project was handling data passing between activities. In the start when I was making the buttons the activity_main.xml file, the app was crashing at first because I did not make the second activity GetPassenger.kt. Later, there was also an issue sending back the passenger list back to the MainActivity.kt, where it was not populating the accumulated list from the second activity. I ended up figuring out that there was an issue with the key-value pairs sending back the data. I ended up making a for loop to get the keys for each passenger and used the putExtra() method to return each passenger object back as a string. 
 
 ## Key Learnings  
 
