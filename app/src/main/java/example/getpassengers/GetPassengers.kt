@@ -13,28 +13,24 @@ import androidx.appcompat.app.AppCompatActivity
 
 class GetPassengers : AppCompatActivity() {
 
-    private var passList: MutableList<Passenger> = mutableListOf()
-    private lateinit var textPut: TextView
-    private lateinit var textFirst: EditText
-    private lateinit var textLast: EditText
-    private lateinit var textPhone: EditText
+    // Mutable ArrayList to accumulate Passenger objects
+    var passList: MutableList<Passenger> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_passengers)
-
-        // Initialize UI elements by linking them to XML IDs
-        textPut = findViewById(R.id.accum_list)
-        textFirst = findViewById(R.id.first_name)
-        textLast = findViewById(R.id.last_name)
-        textPhone = findViewById(R.id.phone_number)
     }
 
     // Function to add a passenger to the accumulating list
-    fun enterPassenger(view: View) {
-        val firstName = textFirst.text.toString().trim()
-        val lastName = textLast.text.toString().trim()
-        val phone = textPhone.text.toString().trim()
+    fun enterPassenger(v: View) {
+        val textFirst: EditText = findViewById(R.id.first_name)
+        val textLast: EditText = findViewById(R.id.last_name)
+        val textPhone: EditText = findViewById(R.id.phone_number)
+        val textPut: TextView = findViewById(R.id.accum_list)
+
+        val firstName = textFirst.getText().toString()
+        val lastName = textLast.getText().toString()
+        val phone = textPhone.getText().toString()
 
         // Ensure all fields are filled
         if (firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty()) {
@@ -42,14 +38,11 @@ class GetPassengers : AppCompatActivity() {
         }
 
         // Create Passenger object
-        val newPassenger = Passenger(firstName, lastName, phone)
-        passList.add(newPassenger)
+        val newPass = Passenger(firstName, lastName, phone)
+        passList.add(newPass) // Add to the ArrayList
 
-       // Format text
-        val formattedText = "${newPassenger.fName}  ${newPassenger.lName}  ${newPassenger.phone}"
-
-        textPut.append("\n$formattedText")
-
+        // Append using toString()
+        textPut.append("\n${newPass.toString()}")
 
         // Clear input fields after adding passenger
         textFirst.text.clear()
@@ -57,9 +50,8 @@ class GetPassengers : AppCompatActivity() {
         textPhone.text.clear()
     }
 
-
     // Function to return the list of passengers to MainActivity
-    fun backToMain(view: View) {
+    fun backToMain(v: View) {
         val intent = Intent()
         intent.putExtra("COUNT", passList.size.toString())
 
@@ -73,9 +65,4 @@ class GetPassengers : AppCompatActivity() {
     }
 }
 
-// Passenger Data Class
-data class Passenger(val fName: String, val lName: String, val phone: String) {
-    override fun toString(): String {
-        return "$fName $lName - $phone"
-    }
-}
+
